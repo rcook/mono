@@ -1,0 +1,9 @@
+#!/bin/bash
+if [[ "$1" == "" ]]; then
+  OPTS="clean all-local install"
+else
+  OPTS=$*
+fi
+CMD="make FRAMEWORK_VERSION=4.0 $OPTS"
+$CMD
+
