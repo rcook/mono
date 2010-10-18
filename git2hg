@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+def run_command(str)
+  res = `#{str} 2>&1`
+  raise RuntimeError.new("Failed to run external command: #{res}") if $? != 0
+  res.chomp
+end
+
+def modified_file_names
+  res = run_command('git status --short')
+  file_names = []
+  res.each_line do |line|
+    file_names << File.expand_path($1) if line =~ /^ M (.+)$/
+  end
+  file_names
+end
+
+begin
+  modified_file_names.each do |file_name|
+    run_command("hg add #{file_name}")
+    puts "#{file_name} added to Mercurial repository."
+  end
+rescue Exception => ex
+  $stderr.write("FAIL: #{ex.message}")
+  exit 1
+end
+

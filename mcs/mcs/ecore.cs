@@ -129,6 +129,11 @@ namespace Mono.CSharp {
 			get { return loc; }
 		}
 
+		public Location LocationX {
+			get { return loc; }
+      set { loc = value; }
+		}
+
 		// Not nice but we have broken hierarchy.
 		public virtual void CheckMarshalByRefAccess (ResolveContext ec)
 		{

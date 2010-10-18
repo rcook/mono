@@ -24,10 +24,12 @@ endif
 
 ifeq (2.1, $(FRAMEWORK_VERSION))
 LOCAL_MCS_FLAGS += -d:SMCS_SOURCE
+LOCAL_MCS_FLAGS += -r:/home/rcook/src/mono-output/lib/mono/2.0/Mono.CompilerServices.Extensibility.dll
 COMPILER_NAME = smcs
 endif
 
 ifeq (4.0, $(FRAMEWORK_VERSION))
+LOCAL_MCS_FLAGS += -r:/home/rcook/src/mono-output/lib/mono/4.0/Mono.CompilerServices.Extensibility.dll
 COMPILER_NAME = dmcs
 endif
 

@@ -293,6 +293,9 @@ namespace Mono.CSharp {
 			get {
 				return texpr;
 			}
+      set {
+        texpr = value;
+      }
 		}
 
 		public override string[] ValidAttributeTargets {

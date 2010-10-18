@@ -1136,6 +1136,11 @@ namespace Mono.CSharp
 			}
 
 			switch (arg.ToLower (CultureInfo.InvariantCulture)){
+
+      case "/detype":
+        RootContext.Detype = true;
+        return true;
+
 			case "/nologo":
 				return true;
 
@@ -1658,6 +1663,11 @@ namespace Mono.CSharp
 
 			if (tokenize || parse_only)
 				return true;
+
+			if (RootContext.Detype)
+			{
+				DuctileSharp.Detyper.ApplyDetypingTransform(RootContext.ToplevelTypes.Types);
+			}
 
 			if (RootContext.ToplevelTypes.NamespaceEntry != null)
 				throw new InternalErrorException ("who set it?");

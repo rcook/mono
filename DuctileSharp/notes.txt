@@ -1,0 +1,71 @@
+DOCUMENTATION FOR DuctileSharp
+
+WEEK 1 (starting Monday 11 October)
+
+BUILD ENVIRONMENT
+
+* Branched from GitHub Mono repository to create git://github.com/rcook/mono.git
+* This is where DuctileSharp work will go
+* Have also created a temporary Mercurial repository for very early experimentation
+* Once I'm comfortable with all the Mono bits I'll start committing into GitHub
+* Have everything building including "dmcs" which is the .NET Framework 4.0 compiler
+* We require 4.0 in order to support the "dynamic" data type
+* Using "dynamic" should make DuctileSharp considerably easier to implement than DuctileJ
+
+THOUGHTS ON MONO C# COMPILER
+
+* Figured out some of the architecture of the Mono C# compiler
+* It's somewhat gnarly and doesn't elegantly support AST modification
+* However, I am able to hack it
+* Interesting links about how to hack the compiler:
+** http://stackoverflow.com/questions/3848001/extending-the-mono-c-compiler-is-there-any-documentation-or-precedent
+** http://www.arlt.eu/blog/2007/03/12/tapping-the-mono-cs-compiler-mcs/
+
+INITIAL DETYPING EXPERIMENT
+
+* I have successfully managed to detype some method arguments:
+* I have currently implemented the following very simple transform:
+\begin{Verbatim}[caption=Doesn't compile]
+using System;
+
+internal static class Program
+{
+    private static void DisplayMessage(int value)
+    {
+        Console.WriteLine("value = {0} [{1}]", value.ToString(), value.GetType().FullName);
+    }
+
+    private static void Main(string[] args)
+    {
+        DisplayMessage("BEGIN");
+        for (int i = 0; i < 10; ++i)
+        {
+            DisplayMessage(i);
+        }
+        DisplayMessage("END");
+    }
+}
+\end{Verbatim}
+to
+\begin{Verbatim}[caption=Does compile]
+using System;
+
+internal static class Program
+{
+    private static void DisplayMessage(dynamic value)
+    {
+        Console.WriteLine("value = {0} [{1}]", value.ToString(), value.GetType().FullName);
+    }
+
+    private static void Main(string[] args)
+    {
+        DisplayMessage("BEGIN");
+        for (int i = 0; i < 10; ++i)
+        {
+            DisplayMessage(i);
+        }
+        DisplayMessage("END");
+    }
+}
+\end{Verbatim}
+

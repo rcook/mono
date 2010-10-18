@@ -4,6 +4,7 @@ argument.cs
 assign.cs
 attribute.cs
 driver.cs
+DuctileSharp.cs
 cs-tokenizer.cs
 cfold.cs
 class.cs

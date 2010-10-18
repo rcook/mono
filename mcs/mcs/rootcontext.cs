@@ -42,6 +42,7 @@ namespace Mono.CSharp {
 		//
 		// COMPILER OPTIONS CLASS
 		//
+		public static bool Detype = false;
 		public static Target Target;
 		public static Platform Platform;
 		public static string TargetExt;

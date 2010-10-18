@@ -1,0 +1,5 @@
+#!/bin/bash
+./autogen.sh --prefix=/home/rcook/src/mono-output
+make
+make install
+
