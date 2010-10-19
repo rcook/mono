@@ -13,14 +13,25 @@ namespace DuctileSharp
 
   internal static class Detyper
   {
-    internal static void ApplyDetypingTransform(IList<TypeContainer> types)
+    internal static void ApplyDetypingTransform(IEnumerable<Ext.ITypeInfo> types)
     {
       Console.WriteLine("ApplyDetypingTransform");
-      Console.WriteLine("Foo: {0}", typeof(Ext.ITypeInfo).FullName);
-      DumpDiagnostics();
-      foreach (Class @class in types)
+      //DumpDiagnostics();
+      foreach (Ext.ITypeInfo type in types)
       {
-        Console.WriteLine("{0}: {1}", @class.GetType().FullName, @class.Name);
+        Console.WriteLine("> {0}:{1}", type.Name, type.GetType().FullName);
+        foreach (Ext.IMethodInfo method in type.Methods)
+        {
+          Console.WriteLine(">> {0}:{1}", method.Name, method.GetType().FullName);
+          foreach (Ext.IParameterInfo parameter in method.Parameters)
+          {
+            Console.WriteLine(">>> {0}:{1}", parameter.Name, parameter.GetType().FullName);
+          }
+          if (!"Main".Equals(method.Name, StringComparison.Ordinal))
+          {
+          }
+        }
+/*
         foreach (Method method in @class.Methods)
         {
           // TODO: Determine a better way to determine if this is the "Main" method.
@@ -40,6 +51,7 @@ namespace DuctileSharp
             }
           }
         }
+*/
       }
     }
 
