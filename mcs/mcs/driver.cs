@@ -21,6 +21,7 @@ namespace Mono.CSharp
 	using System.Text;
 	using System.Globalization;
 	using System.Diagnostics;
+	using Ext = Mono.CompilerServices.Extensibility;
 
 	public enum Target {
 		Library, Exe, Module, WinExe
@@ -1648,6 +1649,14 @@ namespace Mono.CSharp
 			return true;
 		}
 
+		private static IEnumerable<Ext.ITypeInfo> Adapt(IList<TypeContainer> types)
+		{
+			foreach (Class @class in types)
+			{
+				yield return @class;
+			}
+		}
+
 		//
 		// Main compilation method
 		//
@@ -1666,7 +1675,7 @@ namespace Mono.CSharp
 
 			if (RootContext.Detype)
 			{
-				DuctileSharp.Detyper.ApplyDetypingTransform(RootContext.ToplevelTypes.Types);
+				DuctileSharp.Detyper.ApplyDetypingTransform(Adapt(RootContext.ToplevelTypes.Types));
 			}
 
 			if (RootContext.ToplevelTypes.NamespaceEntry != null)
