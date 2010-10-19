@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Linq;
+using Ext = Mono.CompilerServices.Extensibility;
 
 namespace Mono.CSharp {
 
@@ -224,8 +225,14 @@ namespace Mono.CSharp {
 	//
 	// Parameter information created by parser
 	//
-	public class Parameter : ParameterBase, IParameterData, ILocalVariable // TODO: INamedBlockVariable
+	public class Parameter : ParameterBase, IParameterData, ILocalVariable, Ext.IParameterInfo // TODO: INamedBlockVariable
 	{
+		#region IParameterInfo Members
+
+		string Ext.IParameterInfo.Name {get {return Name;}}
+
+		#endregion IParameterInfo Members
+
 		[Flags]
 		public enum Modifier : byte {
 			NONE    = 0,
