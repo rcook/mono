@@ -4,6 +4,8 @@ namespace Mono.CompilerServices.Extensibility
 
     public interface IMethodInfo
     {
+        string Name {get;}
+        IEnumerable<IParameterInfo> Parameters {get;}
     }
 }
 
