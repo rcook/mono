@@ -2427,7 +2427,12 @@ namespace Mono.CSharp {
 			}
 		}
 
-		#endregion ITypeExpression Members
+		#endregion ITypeExpression Member
+
+		public override string ToString()
+		{
+			return GetSignatureForError();
+		}
 
 		protected override void CloneTo (CloneContext clonectx, Expression target)
 		{
