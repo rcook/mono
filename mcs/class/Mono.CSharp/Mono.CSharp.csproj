@@ -104,9 +104,6 @@
     <Compile Include="..\..\mcs\driver.cs">
       <Link>driver.cs</Link>
     </Compile>
-    <Compile Include="..\..\mcs\DuctileSharp.cs">
-      <Link>DuctileSharp.cs</Link>
-    </Compile>
     <Compile Include="..\..\mcs\dynamic.cs">
       <Link>dynamic.cs</Link>
     </Compile>

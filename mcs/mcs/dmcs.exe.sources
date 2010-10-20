@@ -16,7 +16,6 @@ decl.cs
 delegate.cs
 doc.cs
 driver.cs
-DuctileSharp.cs
 dynamic.cs
 ecore.cs
 enum.cs

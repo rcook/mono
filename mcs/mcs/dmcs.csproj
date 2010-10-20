@@ -91,8 +91,6 @@
     </Compile>
     <Compile Include="driver.cs">
     </Compile>
-    <Compile Include="DuctileSharp.cs">
-    </Compile>
     <Compile Include="ecore.cs">
     </Compile>
     <Compile Include="enum.cs">

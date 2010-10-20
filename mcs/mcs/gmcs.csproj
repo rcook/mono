@@ -69,7 +69,6 @@
     <Compile Include="delegate.cs" />
     <Compile Include="doc.cs" />
     <Compile Include="driver.cs" />
-    <Compile Include="DuctileSharp.cs" />
     <Compile Include="ecore.cs" />
     <Compile Include="enum.cs" />
     <Compile Include="expression.cs" />
