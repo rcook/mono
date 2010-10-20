@@ -16,7 +16,7 @@ namespace Mono.DuctileSharp
 
     bool IAddIn.ParseCommandLineOption(string arg)
     {
-      if (arg.Equals("/detype", StringComparison.InvariantCultureIgnoreCase))
+      if ("/detype".Equals(arg, StringComparison.InvariantCultureIgnoreCase))
       {
         _detype = true;
         return true;
