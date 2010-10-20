@@ -7,7 +7,7 @@ namespace Mono.CompilerServices.Extensibility
         string Name {get;}
         string Description {get;}
         bool ParseCommandLineOption(string arg);
-        void ApplyTypeTransform(IEnumerable<ITypeInfo> types);
+        void ApplyTypeTransform(ITypeExpressionFactory typeExprFactory, IEnumerable<ITypeInfo> types);
     }
 }
 

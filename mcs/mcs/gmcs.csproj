@@ -73,8 +73,11 @@
     <Compile Include="enum.cs" />
     <Compile Include="expression.cs" />
     <Compile Include="extensibility\IAddIn.cs" />
+    <Compile Include="extensibility\ILocation.cs" />
     <Compile Include="extensibility\IMethodInfo.cs" />
     <Compile Include="extensibility\IParameterInfo.cs" />
+    <Compile Include="extensibility\ITypeExpression.cs" />
+    <Compile Include="extensibility\ITypeExpressionFactory.cs" />
     <Compile Include="extensibility\ITypeInfo.cs" />
     <Compile Include="flowanalysis.cs" />
     <Compile Include="generic.cs" />

@@ -22,8 +22,11 @@ enum.cs
 eval.cs
 expression.cs
 extensibility/IAddIn.cs
+extensibility/ILocation.cs
 extensibility/IMethodInfo.cs
 extensibility/IParameterInfo.cs
+extensibility/ITypeExpression.cs
+extensibility/ITypeExpressionFactory.cs
 extensibility/ITypeInfo.cs
 field.cs
 flowanalysis.cs

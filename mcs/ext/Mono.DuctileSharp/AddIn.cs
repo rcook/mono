@@ -24,7 +24,7 @@ namespace Mono.DuctileSharp
       return false;
     }
 
-    void IAddIn.ApplyTypeTransform(IEnumerable<ITypeInfo> types)
+    void IAddIn.ApplyTypeTransform(ITypeExpressionFactory typeExprFactory, IEnumerable<ITypeInfo> types)
     {
       foreach (ITypeInfo type in types)
       {
@@ -38,6 +38,12 @@ namespace Mono.DuctileSharp
           }
           if (!"Main".Equals(method.Name, StringComparison.Ordinal))
           {
+            foreach (IParameterInfo parameter in method.Parameters)
+            {
+              Console.WriteLine("* {0}:{1}", parameter.Name, parameter.TypeExpression);
+              ITypeExpression typeExpr = typeExprFactory.CreateSimpleTypeExpression("dynamic", parameter.TypeExpression.Location);
+              parameter.TypeExpression = typeExpr;
+            }
           }
         }
       }

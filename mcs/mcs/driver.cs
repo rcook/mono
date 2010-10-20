@@ -1664,6 +1664,22 @@ namespace Mono.CSharp
 			}
 		}
 
+		private sealed class TypeExpressionFactory : Ext.ITypeExpressionFactory
+		{
+			#region ITypeExpressionFactory Members
+
+			Ext.ITypeExpression Ext.ITypeExpressionFactory.CreateSimpleTypeExpression(string name, Ext.ILocation location)
+			{
+				return new SimpleName(name, (Location)location);
+			}
+
+			#endregion ITypeExpressionFactory Members
+
+			internal TypeExpressionFactory()
+			{
+			}
+		}
+
 		//
 		// Main compilation method
 		//
@@ -1680,9 +1696,10 @@ namespace Mono.CSharp
 			if (tokenize || parse_only)
 				return true;
 
+			TypeExpressionFactory typeExprFactory = new TypeExpressionFactory();
 			foreach (Ext.IAddIn addIn in RootContext.AddIns)
 			{
-				addIn.ApplyTypeTransform(Adapt(RootContext.ToplevelTypes.Types));
+				addIn.ApplyTypeTransform(typeExprFactory, Adapt(RootContext.ToplevelTypes.Types));
 			}
 
 			if (RootContext.ToplevelTypes.NamespaceEntry != null)

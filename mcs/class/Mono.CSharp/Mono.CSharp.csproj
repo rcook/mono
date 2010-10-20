@@ -122,11 +122,20 @@
     <Compile Include="..\..\mcs\extensibility\IAddIn.cs">
       <Link>extensibility\IAddIn.cs</Link>
     </Compile>
+    <Compile Include="..\..\mcs\extensibility\ILocation.cs">
+      <Link>extensibility\ILocation.cs</Link>
+    </Compile>
     <Compile Include="..\..\mcs\extensibility\IMethodInfo.cs">
       <Link>extensibility\IMethodInfo.cs</Link>
     </Compile>
     <Compile Include="..\..\mcs\extensibility\IParameterInfo.cs">
       <Link>extensibility\IParameterInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\mcs\extensibility\ITypeExpression.cs">
+      <Link>extensibility\ITypeExpression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\mcs\extensibility\ITypeExpressionFactory.cs">
+      <Link>extensibility\ITypeExpressionFactory.cs</Link>
     </Compile>
     <Compile Include="..\..\mcs\extensibility\ITypeInfo.cs">
       <Link>extensibility\ITypeInfo.cs</Link>

@@ -231,6 +231,18 @@ namespace Mono.CSharp {
 
 		string Ext.IParameterInfo.Name {get {return Name;}}
 
+		Ext.ITypeExpression Ext.IParameterInfo.TypeExpression
+		{
+			get
+			{
+				return TypeExpression;
+			}
+			set
+			{
+				TypeExpression = (FullNamedExpression)value;
+			}
+		}
+
 		#endregion IParameterInfo Members
 
 		[Flags]

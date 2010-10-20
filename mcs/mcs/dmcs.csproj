@@ -99,9 +99,15 @@
     </Compile>
     <Compile Include="extensibility\IAddIn.cs">
     </Compile>
+    <Compile Include="extensibility\ILocation.cs">
+    </Compile>
     <Compile Include="extensibility\IMethodInfo.cs">
     </Compile>
     <Compile Include="extensibility\IParameterInfo.cs">
+    </Compile>
+    <Compile Include="extensibility\ITypeExpression.cs">
+    </Compile>
+    <Compile Include="extensibility\ITypeExpressionFactory.cs">
     </Compile>
     <Compile Include="extensibility\ITypeInfo.cs">
     </Compile>
