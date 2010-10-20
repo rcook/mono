@@ -66,10 +66,17 @@ namespace Mono.CSharp {
 				_addIns = new Ext.IAddIn[addInTypeNames.Length];
 				for (int i = 0; i < _addIns.Length; ++i)
 				{
-					Type addInType = Type.GetType(addInTypeNames[i], true, false);
-					object addInObj = Activator.CreateInstance(addInType, false);
-					_addIns[i] = (Ext.IAddIn)addInObj;
-					Console.WriteLine("Loaded compiler add-in \"{0}\"", _addIns[i].Name);
+					Type addInType = Type.GetType(addInTypeNames[i], false, false);
+					if (null == addInType)
+					{
+						Console.WriteLine("Failed to load compiler add-in \"{0}\"", addInTypeNames[i]);
+					}
+					else
+					{
+						object addInObj = Activator.CreateInstance(addInType, false);
+						_addIns[i] = (Ext.IAddIn)addInObj;
+						Console.WriteLine("Loaded compiler add-in \"{0}\"", _addIns[i].Name);
+					}
 				}
 			}
 		}
