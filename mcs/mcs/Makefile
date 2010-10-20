@@ -13,8 +13,6 @@ EXTRA_DISTFILES = \
 	*mcs.exe.config
 
 COMPILER_NAME = gmcs
-LOCAL_MCS_FLAGS += /lib:../class/lib/$(PROFILE)
-LOCAL_MCS_FLAGS += /r:Mono.CompilerServices.Extensibility.dll
 
 ifeq (net_2_0, $(PROFILE))
 INTERNAL_GMCS = $(RUNTIME) $(RUNTIME_FLAGS) $(topdir)/class/lib/$(BOOTSTRAP_PROFILE)/gmcs.exe

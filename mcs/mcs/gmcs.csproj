@@ -73,6 +73,10 @@
     <Compile Include="ecore.cs" />
     <Compile Include="enum.cs" />
     <Compile Include="expression.cs" />
+    <Compile Include="extensibility\IAddIn.cs" />
+    <Compile Include="extensibility\IMethodInfo.cs" />
+    <Compile Include="extensibility\IParameterInfo.cs" />
+    <Compile Include="extensibility\ITypeInfo.cs" />
     <Compile Include="flowanalysis.cs" />
     <Compile Include="generic.cs" />
     <Compile Include="iterators.cs" />

@@ -99,6 +99,14 @@
     </Compile>
     <Compile Include="expression.cs">
     </Compile>
+    <Compile Include="extensibility\IAddIn.cs">
+    </Compile>
+    <Compile Include="extensibility\IMethodInfo.cs">
+    </Compile>
+    <Compile Include="extensibility\IParameterInfo.cs">
+    </Compile>
+    <Compile Include="extensibility\ITypeInfo.cs">
+    </Compile>
     <Compile Include="flowanalysis.cs">
     </Compile>
     <Compile Include="generic.cs" />

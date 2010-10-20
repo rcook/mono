@@ -122,6 +122,18 @@
     <Compile Include="..\..\mcs\expression.cs">
       <Link>expression.cs</Link>
     </Compile>
+    <Compile Include="..\..\mcs\extensibility\IAddIn.cs">
+      <Link>extensibility\IAddIn.cs</Link>
+    </Compile>
+    <Compile Include="..\..\mcs\extensibility\IMethodInfo.cs">
+      <Link>extensibility\IMethodInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\mcs\extensibility\IParameterInfo.cs">
+      <Link>extensibility\IParameterInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\mcs\extensibility\ITypeInfo.cs">
+      <Link>extensibility\ITypeInfo.cs</Link>
+    </Compile>
     <Compile Include="..\..\mcs\field.cs">
       <Link>field.cs</Link>
     </Compile>
