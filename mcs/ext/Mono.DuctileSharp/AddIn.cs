@@ -26,48 +26,30 @@ namespace Mono.DuctileSharp
 
     void IAddIn.ApplyTypeTransform(ITypeExpressionFactory typeExprFactory, IEnumerable<ITypeInfo> types)
     {
-      foreach (ITypeInfo type in types)
+      if (_detype)
       {
-        Console.WriteLine("> {0}:{1}", type.Name, type.GetType().FullName);
-        foreach (IMethodInfo method in type.Methods)
+        foreach (ITypeInfo type in types)
         {
-          Console.WriteLine(">> {0}:{1}", method.Name, method.GetType().FullName);
-          foreach (IParameterInfo parameter in method.Parameters)
+          Console.WriteLine("> {0} : {1}", type.Name, type.GetType().FullName);
+          foreach (IMethodInfo method in type.Methods)
           {
-            Console.WriteLine(">>> {0}:{1}", parameter.Name, parameter.GetType().FullName);
-          }
-          if (!"Main".Equals(method.Name, StringComparison.Ordinal))
-          {
+            Console.WriteLine(">> {0} : {1}", method.Name, method.GetType().FullName);
             foreach (IParameterInfo parameter in method.Parameters)
             {
-              Console.WriteLine("* {0}:{1}", parameter.Name, parameter.TypeExpression);
-              ITypeExpression typeExpr = typeExprFactory.CreateSimpleTypeExpression("dynamic", parameter.TypeExpression.Location);
-              parameter.TypeExpression = typeExpr;
+              Console.WriteLine(">>> {0} : {1}", parameter.Name, parameter.GetType().FullName);
+            }
+            if (!"Main".Equals(method.Name, StringComparison.Ordinal))
+            {
+              foreach (IParameterInfo parameter in method.Parameters)
+              {
+                Console.WriteLine("Detyped: {0} : {1} -> dynamic", parameter.Name, parameter.TypeExpression);
+                ITypeExpression typeExpr = typeExprFactory.CreateSimpleTypeExpression("dynamic", parameter.TypeExpression.Location);
+                parameter.TypeExpression = typeExpr;
+              }
             }
           }
         }
       }
-/*
-        foreach (Method method in @class.Methods)
-        {
-          // TODO: Determine a better way to determine if this is the "Main" method.
-          if (!"Main".Equals(method.Name, StringComparison.Ordinal))
-          {
-            Console.WriteLine("  {0}: {1}", method.GetType().FullName, method.Name);
-            foreach (Parameter parameter in method.ParameterInfo.FixedParameters)
-            {
-              SimpleName dynamicTypeExpr = new SimpleName("dynamic", parameter.TypeExpression.LocationX);
-              parameter.TypeExpression = dynamicTypeExpr;
-              Console.WriteLine("Hooray!");
-              Console.WriteLine("    {0}: {1}:{2} [{3}]",
-                parameter.GetType().FullName,
-                parameter.Name,
-                parameter.TypeExpression.GetSignatureForError(),
-                null == parameter.TypeExpression.Type ? "(null type)" : "(non-null type)");
-            }
-          }
-        }
-*/
     }
 
     #endregion IAddIn Members
