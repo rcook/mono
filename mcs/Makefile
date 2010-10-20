@@ -1,20 +1,20 @@
 thisdir := .
 
-SUBDIRS := build jay mcs class nunit24 ilasm tools tests errors docs
+SUBDIRS := build jay mcs ext class nunit24 ilasm tools tests errors docs
 
-basic_SUBDIRS := build jay mcs class tools
+basic_SUBDIRS := build jay mcs ext class tools
 net_2_0_bootstrap_SUBDIRS := build tools
-net_2_0_SUBDIRS := build mcs class nunit24 ilasm tools tests errors 
-moonlight_bootstrap_SUBDIRS := build mcs class
-moonlight_raw_SUBDIRS := build mcs class tools
+net_2_0_SUBDIRS := build mcs ext class nunit24 ilasm tools tests errors 
+moonlight_bootstrap_SUBDIRS := build mcs ext class
+moonlight_raw_SUBDIRS := build mcs ext class tools
 moonlight_SUBDIRS := tools tests errors
-monodroid_bootstrap_SUBDIRS := build mcs class
-monodroid_SUBDIRS := build mcs class
-monotouch_bootstrap_SUBDIRS := build mcs class
-monotouch_SUBDIRS := build mcs class
+monodroid_bootstrap_SUBDIRS := build mcs ext class
+monodroid_SUBDIRS := build mcs ext class
+monotouch_bootstrap_SUBDIRS := build mcs ext class
+monotouch_SUBDIRS := build mcs ext class
 net_3_5_SUBDIRS := build class tools/xbuild
-net_4_0_bootstrap_SUBDIRS := build mcs class tools 
-net_4_0_SUBDIRS := build mcs class nunit24 ilasm tools tests errors docs
+net_4_0_bootstrap_SUBDIRS := build mcs ext class tools 
+net_4_0_SUBDIRS := build mcs ext class nunit24 ilasm tools tests errors docs
 
 # List of test subdirs that should pass 100%
 centum_tests := \
