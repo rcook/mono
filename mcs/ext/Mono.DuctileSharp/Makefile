@@ -5,7 +5,7 @@ include ../../build/rules.make
 LIBRARY = Mono.DuctileSharp.dll
 LIBRARY_USE_INTERMEDIATE_FILE = yes
 
-LIB_MCS_FLAGS = /r:$(corlib) /r:System.dll
+LIB_MCS_FLAGS = /r:$(corlib) /r:System.dll /r:dmcs.exe
 NO_TEST = yes
 
 ifneq (basic, $(PROFILE))

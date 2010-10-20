@@ -298,6 +298,9 @@ namespace Mono.CSharp
 
 		public static int Main (string[] args)
 		{
+			RootContext.LoadAddIns();
+
+
 			Location.InEmacs = Environment.GetEnvironmentVariable ("EMACS") == "t";
 			var crp = new ConsoleReportPrinter ();
 			Driver d = Driver.Create (args, true, crp);

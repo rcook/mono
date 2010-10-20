@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Diagnostics;
+using Ext = Mono.CompilerServices.Extensibility;
 
 namespace Mono.CSharp {
 
@@ -38,6 +39,29 @@ namespace Mono.CSharp {
 	}
 
 	public class RootContext {
+
+		private static Ext.IAddIn[] _addIns;
+
+		public static void LoadAddIns()
+		{
+			string addInTypeNameString = System.Configuration.ConfigurationSettings.AppSettings["add-ins"];
+			if (string.IsNullOrEmpty(addInTypeNameString))
+			{
+				_addIns = new Ext.IAddIn[0];
+			}
+			else
+			{
+				string[] addInTypeNames = addInTypeNameString.Split(';');
+				_addIns = new Ext.IAddIn[addInTypeNames.Length];
+				for (int i = 0; i < _addIns.Length; ++i)
+				{
+					Type addInType = Type.GetType(addInTypeNames[i], true, false);
+					object addInObj = Activator.CreateInstance(addInType, false);
+					_addIns[i] = (Ext.IAddIn)addInObj;
+					Console.WriteLine("Loaded compiler add-in \"{0}\"", _addIns[i].Name);
+				}
+			}
+		}
 
 		//
 		// COMPILER OPTIONS CLASS
