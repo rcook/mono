@@ -2,28 +2,19 @@ namespace DuctileSharp
 {
   using System;
   using System.Collections.Generic;
-  using Mono.CompilerServices.SymbolWriter;
-  using Mono.CSharp;
-
-  using NamespaceEntry = Mono.CompilerServices.SymbolWriter.NamespaceEntry;
-
-  using Ext = Mono.CompilerServices.Extensibility;
-
-  using System.Reflection;
+  using Mono.CompilerServices.Extensibility;
 
   internal static class Detyper
   {
-    internal static void ApplyDetypingTransform(IEnumerable<Ext.ITypeInfo> types)
+    internal static void ApplyDetypingTransform(IEnumerable<ITypeInfo> types)
     {
-      Console.WriteLine("ApplyDetypingTransform");
-      //DumpDiagnostics();
-      foreach (Ext.ITypeInfo type in types)
+      foreach (ITypeInfo type in types)
       {
         Console.WriteLine("> {0}:{1}", type.Name, type.GetType().FullName);
-        foreach (Ext.IMethodInfo method in type.Methods)
+        foreach (IMethodInfo method in type.Methods)
         {
           Console.WriteLine(">> {0}:{1}", method.Name, method.GetType().FullName);
-          foreach (Ext.IParameterInfo parameter in method.Parameters)
+          foreach (IParameterInfo parameter in method.Parameters)
           {
             Console.WriteLine(">>> {0}:{1}", parameter.Name, parameter.GetType().FullName);
           }
@@ -52,14 +43,6 @@ namespace DuctileSharp
           }
         }
 */
-      }
-    }
-
-    private static void DumpDiagnostics()
-    {
-      foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-      {
-        Console.WriteLine("Assembly: {0}", assembly.FullName);
       }
     }
   }

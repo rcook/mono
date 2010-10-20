@@ -1232,4 +1232,7 @@ tools/Makefile
 tools/sgen/Makefile
 tools/sgen/sgen-grep-binprot
 web/Makefile
+mcs/class/lib/net_2_0/dmcs.exe
+mcs/class/lib/net_2_0/dmcs.exe.config
+mcs/class/lib/net_2_0/dmcs.exe.mdb
 
