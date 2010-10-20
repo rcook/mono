@@ -202,4 +202,12 @@ tools/Makefile
 tools/locale-builder/Makefile
 tools/sgen/Makefile
 web/Makefile
+mcs/build/deps/System.Web_test_net_4_0.dll.response
+mcs/build/deps/net_4_0_System.Web.dll.sources
+mcs/class/Mono.CSharp/Mono.CSharp.dll.sources
+mcs/class/System.XML/Mono.Xml.Xsl/PatternParser.jay
+mcs/class/lib/net_2_0/tmp/.stamp
+mcs/class/lib/net_2_0_bootstrap/.stamp
+mcs/class/lib/net_2_0_bootstrap/tmp/.stamp
+mono/mini/.deps/libmono_2_0_la-method-to-ir.Tpo
 
