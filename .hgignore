@@ -239,4 +239,5 @@ mcs/class/lib/net_2_0_bootstrap/resgen.exe.mdb
 mcs/class/lib/net_2_0_bootstrap/tmp/Mono.CompilerServices.Extensibility.dll
 mcs/mcs/gmcs.exe
 mcs/build/deps/corlib_test_net_2_0.dll.response
+tools/sgen/sgen-grep-binprot
 
