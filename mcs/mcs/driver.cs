@@ -1141,10 +1141,6 @@ namespace Mono.CSharp
 
 			switch (arg.ToLower (CultureInfo.InvariantCulture)){
 
-      case "/detype":
-        RootContext.Detype = true;
-        return true;
-
 			case "/nologo":
 				return true;
 
@@ -1582,6 +1578,14 @@ namespace Mono.CSharp
 				return true;
 			}
 
+			foreach (Ext.IAddIn addIn in RootContext.AddIns)
+			{
+				if (addIn.ParseCommandLineOption(arg))
+				{
+					return true;
+				}
+			}
+
 			return false;
 		}
 
@@ -1676,9 +1680,9 @@ namespace Mono.CSharp
 			if (tokenize || parse_only)
 				return true;
 
-			if (RootContext.Detype)
+			foreach (Ext.IAddIn addIn in RootContext.AddIns)
 			{
-				DuctileSharp.Detyper.ApplyDetypingTransform(Adapt(RootContext.ToplevelTypes.Types));
+				addIn.ApplyTypeTransform(Adapt(RootContext.ToplevelTypes.Types));
 			}
 
 			if (RootContext.ToplevelTypes.NamespaceEntry != null)

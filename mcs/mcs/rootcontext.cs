@@ -42,6 +42,17 @@ namespace Mono.CSharp {
 
 		private static Ext.IAddIn[] _addIns;
 
+		public static IEnumerable<Ext.IAddIn> AddIns
+		{
+			get
+			{
+				foreach (Ext.IAddIn addIn in _addIns)
+				{
+					yield return addIn;
+				}
+			}
+		}
+
 		public static void LoadAddIns()
 		{
 			string addInTypeNameString = System.Configuration.ConfigurationSettings.AppSettings["add-ins"];
@@ -66,7 +77,6 @@ namespace Mono.CSharp {
 		//
 		// COMPILER OPTIONS CLASS
 		//
-		public static bool Detype = false;
 		public static Target Target;
 		public static Platform Platform;
 		public static string TargetExt;
