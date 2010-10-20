@@ -1235,4 +1235,16 @@ web/Makefile
 mcs/class/lib/net_2_0/dmcs.exe
 mcs/class/lib/net_2_0/dmcs.exe.config
 mcs/class/lib/net_2_0/dmcs.exe.mdb
+mcs/class/lib/basic/Mono.DuctileSharp.dll
+mcs/class/lib/basic/gmcs.exe.mdb
+mcs/class/lib/basic/tmp/Mono.DuctileSharp.dll
+mcs/class/lib/net_2_0/Mono.DuctileSharp.dll
+mcs/class/lib/net_2_0/Mono.DuctileSharp.dll.mdb
+mcs/class/lib/net_2_0/tmp/Mono.DuctileSharp.dll
+mcs/class/lib/net_4_0/Mono.DuctileSharp.dll
+mcs/class/lib/net_4_0/Mono.DuctileSharp.dll.mdb
+mcs/class/lib/net_4_0/tmp/Mono.DuctileSharp.dll
+mcs/class/lib/net_4_0_bootstrap/Mono.DuctileSharp.dll
+mcs/class/lib/net_4_0_bootstrap/Mono.DuctileSharp.dll.mdb
+mcs/class/lib/net_4_0_bootstrap/tmp/Mono.DuctileSharp.dll
 
