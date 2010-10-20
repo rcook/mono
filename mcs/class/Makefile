@@ -2,7 +2,6 @@ thisdir = class
 
 bootstrap_dirs := \
 	corlib					\
-	Mono.CompilerServices.Extensibility	\
 	Mono.CompilerServices.SymbolWriter	\
 	System					\
 	System.XML				\
@@ -14,7 +13,7 @@ bootstrap_dirs := \
 
 # Note that Mono.Security and System.Security aren't listed.
 # We may have to add those if 'mcs' starts using them.
-basic_SUBDIRS := corlib System System.XML System Mono.Security Mono.CompilerServices.Extensibility Mono.CompilerServices.SymbolWriter System.Core
+basic_SUBDIRS := corlib System System.XML System Mono.Security Mono.CompilerServices.SymbolWriter System.Core
 
 net_1_1_java_SUBDIRS = \
 	System.Xml					\

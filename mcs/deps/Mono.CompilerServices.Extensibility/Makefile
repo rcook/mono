@@ -1,4 +1,4 @@
-thisdir = class/Mono.CompilerServices.Extensibility
+thisdir = deps/Mono.CompilerServices.Extensibility
 SUBDIRS =
 include ../../build/rules.make
 

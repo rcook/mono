@@ -13,6 +13,8 @@ EXTRA_DISTFILES = \
 	*mcs.exe.config
 
 COMPILER_NAME = gmcs
+LOCAL_MCS_FLAGS += /lib:../class/lib/$(PROFILE)
+LOCAL_MCS_FLAGS += /r:Mono.CompilerServices.Extensibility.dll
 
 ifeq (net_2_0, $(PROFILE))
 INTERNAL_GMCS = $(RUNTIME) $(RUNTIME_FLAGS) $(topdir)/class/lib/$(BOOTSTRAP_PROFILE)/gmcs.exe
@@ -24,12 +26,10 @@ endif
 
 ifeq (2.1, $(FRAMEWORK_VERSION))
 LOCAL_MCS_FLAGS += -d:SMCS_SOURCE
-LOCAL_MCS_FLAGS += -r:/home/rcook/src/mono-output/lib/mono/2.0/Mono.CompilerServices.Extensibility.dll
 COMPILER_NAME = smcs
 endif
 
 ifeq (4.0, $(FRAMEWORK_VERSION))
-LOCAL_MCS_FLAGS += -r:/home/rcook/src/mono-output/lib/mono/4.0/Mono.CompilerServices.Extensibility.dll
 COMPILER_NAME = dmcs
 endif
 
