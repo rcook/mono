@@ -26,6 +26,7 @@ field.cs
 flowanalysis.cs
 generic.cs
 import.cs
+instrumentation.cs
 iterators.cs
 lambda.cs
 linq.cs

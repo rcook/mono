@@ -347,6 +347,7 @@ namespace Mono.CSharp {
 				ParameterReference.EmitLdArg (ec, i);
 
 			ec.Emit (OpCodes.Call, base_method);
+Console.WriteLine("pending.cs");
 			ec.Emit (OpCodes.Ret);
 
 			container.TypeBuilder.DefineMethodOverride (proxy, (MethodInfo) iface_method.GetMetaInfo ());

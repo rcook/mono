@@ -1833,7 +1833,9 @@ namespace Mono.CSharp {
 				builder = container.TypeBuilder.DefineMethod (
 					method_name, flags, method.CallingConventions,
 					return_type, p_types);
-				return;
+
+        Instrumentation.Helpers.EmitPrologue(builder.GetILGenerator(), method_name);
+			return;
 			}
 
 			//

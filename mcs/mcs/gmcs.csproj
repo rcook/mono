@@ -74,6 +74,7 @@
     <Compile Include="expression.cs" />
     <Compile Include="flowanalysis.cs" />
     <Compile Include="generic.cs" />
+    <Compile Include="instrumentation.cs" />
     <Compile Include="iterators.cs" />
     <Compile Include="literal.cs" />
     <Compile Include="location.cs" />

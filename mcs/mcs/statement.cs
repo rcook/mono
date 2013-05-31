@@ -794,8 +794,10 @@ namespace Mono.CSharp {
 
 			if (unwind_protect)
 				ec.Emit (OpCodes.Leave, ec.ReturnLabel);
-			else
+			else {
+        Instrumentation.Helpers.EmitEpilogue(ec);
 				ec.Emit (OpCodes.Ret);
+      }
 		}
 
 		void Error_ReturnFromIterator (ResolveContext rc)
@@ -2919,6 +2921,7 @@ namespace Mono.CSharp {
 
 			if (ec.return_value != null) {
 				ec.Emit (OpCodes.Ldloc, ec.return_value);
+        Instrumentation.Helpers.EmitEpilogue(ec);
 				ec.Emit (OpCodes.Ret);
 			} else {
 				//
@@ -2937,6 +2940,7 @@ namespace Mono.CSharp {
 				if (ec.HasReturnLabel || !unreachable) {
 					if (ec.ReturnType != TypeManager.void_type)
 						ec.Emit (OpCodes.Ldloc, ec.TemporaryReturn ());
+          Instrumentation.Helpers.EmitEpilogue(ec);
 					ec.Emit (OpCodes.Ret);
 				}
 			}
