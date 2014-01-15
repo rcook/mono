@@ -41,3 +41,6 @@ using System.Runtime.CompilerServices;
 
 [assembly: AssemblyDescription ("Mono C# Compiler")]
 
+[assembly: AssemblyDelaySign(true)]
+[assembly: AssemblyKeyFile("../class/mono.pub")]
+

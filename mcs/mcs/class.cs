@@ -21,6 +21,7 @@ using System.Security;
 using System.Security.Permissions;
 using System.Text;
 using System.Linq;
+using Ext = Mono.CompilerServices.Extensibility;
 
 #if NET_2_1
 using XmlElement = System.Object;
@@ -2263,7 +2264,25 @@ namespace Mono.CSharp {
 
 
 	// TODO: should be sealed
-	public class Class : ClassOrStruct {
+	public class Class : ClassOrStruct, Ext.ITypeInfo {
+
+		#region ITypeInfo Members
+
+		string Ext.ITypeInfo.Name {get {return Name;}}
+
+		IEnumerable<Ext.IMethodInfo> Ext.ITypeInfo.Methods
+		{
+			get
+			{
+				foreach (Method method in Methods)
+				{
+					yield return method;
+				}
+			}
+		}
+
+		#endregion ITypeInfo Members
+
 		const Modifiers AllowedModifiers =
 			Modifiers.NEW |
 			Modifiers.PUBLIC |

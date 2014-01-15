@@ -297,6 +297,8 @@ namespace Mono.CSharp
 
 		public static int Main (string[] args)
 		{
+			AddInManager.LoadAddIns();
+
 			Location.InEmacs = Environment.GetEnvironmentVariable ("EMACS") == "t";
 			var crp = new ConsoleReportPrinter ();
 			Driver d = Driver.Create (args, true, crp);
@@ -1573,6 +1575,11 @@ namespace Mono.CSharp
 				return true;
 			}
 
+			if (AddInManager.ParseCommandLineOption(arg))
+			{
+				return true;
+			}
+
 			return false;
 		}
 
@@ -1658,6 +1665,8 @@ namespace Mono.CSharp
 
 			if (tokenize || parse_only)
 				return true;
+
+			AddInManager.ApplyTypeTransforms(RootContext.ToplevelTypes.Types);
 
 			if (RootContext.ToplevelTypes.NamespaceEntry != null)
 				throw new InternalErrorException ("who set it?");

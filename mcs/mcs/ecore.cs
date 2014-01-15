@@ -18,6 +18,7 @@ using System.Reflection.Emit;
 using System.Text;
 using SLE = System.Linq.Expressions;
 using System.Linq;
+using Ext = Mono.CompilerServices.Extensibility;
 
 namespace Mono.CSharp {
 
@@ -2409,8 +2410,25 @@ namespace Mono.CSharp {
 	///   Represents a namespace or a type.  The name of the class was inspired by
 	///   section 10.8.1 (Fully Qualified Names).
 	/// </summary>
-	public abstract class FullNamedExpression : Expression
+	public abstract class FullNamedExpression : Expression, Ext.ITypeExpression
 	{
+		#region ITypeExpression Members
+
+		Ext.ILocation Ext.ITypeExpression.Location
+		{
+			get
+			{
+				return Location;
+			}
+		}
+
+		#endregion ITypeExpression Member
+
+		public override string ToString()
+		{
+			return GetSignatureForError();
+		}
+
 		protected override void CloneTo (CloneContext clonectx, Expression target)
 		{
 			// Do nothing, most unresolved type expressions cannot be

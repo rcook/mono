@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Mono.CompilerServices.SymbolWriter;
 using System.Diagnostics;
 using System.Linq;
+using Ext = Mono.CompilerServices.Extensibility;
 
 namespace Mono.CSharp {
 	/// <summary>
@@ -167,7 +168,7 @@ namespace Mono.CSharp {
 	///
 	///   http://lists.ximian.com/pipermail/mono-devel-list/2004-December/009508.html
 	/// </remarks>
-	public struct Location : IEquatable<Location>
+	public struct Location : IEquatable<Location>, Ext.ILocation
 	{
 		int token; 
 

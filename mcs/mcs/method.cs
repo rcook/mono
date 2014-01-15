@@ -27,6 +27,7 @@ using XmlElement = System.Object;
 #else
 using System.Xml;
 #endif
+using Ext = Mono.CompilerServices.Extensibility;
 
 using Mono.CompilerServices.SymbolWriter;
 
@@ -761,8 +762,25 @@ namespace Mono.CSharp {
 		}
 	}
 
-	public class Method : MethodOrOperator, IGenericMethodDefinition
+	public class Method : MethodOrOperator, IGenericMethodDefinition, Ext.IMethodInfo
 	{
+		#region IMethodInfo Members
+
+		string Ext.IMethodInfo.Name {get {return Name;}}
+
+		IEnumerable<Ext.IParameterInfo> Ext.IMethodInfo.Parameters
+		{
+			get
+			{
+				foreach (Parameter parameter in this.ParameterInfo.FixedParameters)
+				{
+					yield return parameter;
+				}
+			}
+		}
+
+		#endregion IMethodMembers
+
 		Method partialMethodImplementation;
 
 		public Method (DeclSpace parent, GenericMethod generic,
