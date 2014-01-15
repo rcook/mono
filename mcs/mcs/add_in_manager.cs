@@ -32,11 +32,11 @@ namespace Mono.CSharp
       }
     }
 
-    private static IAddIn[] _addIns;
+    private static IAddIn[] _addIns = _addIns = new IAddIn[0];
 
     internal static void LoadAddIns()
     {
-      _addIns = new IAddIn[0];
+#if !BOOTSTRAP_BASIC && !BOOTSTRAP_NET_4_0
       string addInTypeNamesString = ConfigurationSettings.AppSettings["add-ins"];
       if (!string.IsNullOrEmpty(addInTypeNamesString))
       {
@@ -58,6 +58,7 @@ namespace Mono.CSharp
         }
         _addIns = addIns.ToArray();
       }
+#endif
     }
 
     internal static bool ParseCommandLineOption(string arg)
