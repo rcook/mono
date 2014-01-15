@@ -36,29 +36,30 @@ namespace Mono.CSharp
 
     internal static void LoadAddIns()
     {
-#if !BOOTSTRAP_BASIC && !BOOTSTRAP_NET_4_0
-      string addInTypeNamesString = ConfigurationSettings.AppSettings["add-ins"];
-      if (!string.IsNullOrEmpty(addInTypeNamesString))
+      if (!IsSafeMode)
       {
-        string[] addInTypeNames = addInTypeNamesString.Split(';');
-        List<IAddIn> addIns = new List<IAddIn>();
-        for (int i = 0; i < addInTypeNames.Length; ++i)
+        string addInTypeNamesString = ConfigurationSettings.AppSettings["add-ins"];
+        if (!string.IsNullOrEmpty(addInTypeNamesString))
         {
-          try
+          string[] addInTypeNames = addInTypeNamesString.Split(';');
+          List<IAddIn> addIns = new List<IAddIn>();
+          for (int i = 0; i < addInTypeNames.Length; ++i)
           {
-            Type addInType = Type.GetType(addInTypeNames[i], true, false);
-            object addInObj = Activator.CreateInstance(addInType, false);
-            IAddIn addIn = (IAddIn)addInObj;
-            addIns.Add(addIn);
+            try
+            {
+              Type addInType = Type.GetType(addInTypeNames[i], true, false);
+              object addInObj = Activator.CreateInstance(addInType, false);
+              IAddIn addIn = (IAddIn)addInObj;
+              addIns.Add(addIn);
+            }
+            catch (Exception)
+            {
+              Console.WriteLine("Add-in manager: add-in failed to load.");
+            }
           }
-          catch (Exception)
-          {
-            Console.WriteLine("Add-in manager: add-in failed to load.");
-          }
+          _addIns = addIns.ToArray();
         }
-        _addIns = addIns.ToArray();
       }
-#endif
     }
 
     internal static bool ParseCommandLineOption(string arg)
@@ -93,6 +94,15 @@ namespace Mono.CSharp
         {
           Console.WriteLine("Add-in manager: add-in failed to apply type transform.");
         }
+      }
+    }
+
+    private static bool IsSafeMode
+    {
+      get
+      {
+        string value = Environment.GetEnvironmentVariable("MCS_SAFE_MODE");
+        return "true".Equals(value, StringComparison.InvariantCultureIgnoreCase);
       }
     }
 

@@ -64,6 +64,7 @@ export TEST_HARNESS
 export BOOTSTRAP_MCS
 export DESTDIR
 export RESGEN
+export MCS_SAFE_MODE
 
 # Get this so the platform.make platform-check rule doesn't become the
 # default target
@@ -207,4 +208,6 @@ withmcs:
 Q_MDOC =$(if $(V),,@echo "MDOC    [$(PROFILE)] $(notdir $(@))";)
 MDOC   =$(Q_MDOC) MONO_PATH="$(topdir)/class/lib/net_4_0$(PLATFORM_PATH_SEPARATOR)$(topdir)/class/lib/net_2_0$(PLATFORM_PATH_SEPARATOR)$$MONO_PATH" \
 	$(RUNTIME) $(topdir)/tools/mdoc/mdoc.exe
+
+MCS_SAFE_MODE = true
 
